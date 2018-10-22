@@ -1,10 +1,15 @@
 package pl.edu.pjatk.tau.domain;
 
+import pl.edu.pjatk.tau.domain.timeStamps.*;
+
 public class Manga {
     private static int id;
     private String autor;
     private String title;
     private String category;
+    private ITimeStamp createTimeStamp = new CreateTimeStamp();
+    private ITimeStamp updateTimeStamp = new UpdateTimeStamp();
+    private ITimeStamp readTimeStamp = new ReadTimeStamp();
 
     public Manga(
             String autor,
@@ -47,5 +52,29 @@ public class Manga {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public ITimeStamp getReadTimeStamp() {
+        return readTimeStamp;
+    }
+
+    public void setReadTimeStamp(ITimeStamp readTimeStamp) {
+        this.readTimeStamp = readTimeStamp;
+    }
+
+    public ITimeStamp getUpdateTimeStamp() {
+        return updateTimeStamp;
+    }
+
+    public void setUpdateTimeStamp(ITimeStamp updateTimeStamp) {
+        this.updateTimeStamp = updateTimeStamp;
+    }
+
+    public ITimeStamp getCreateTimeStamp() {
+        return createTimeStamp;
+    }
+
+    public void setCreateTimeStamp(ITimeStamp createTimeStamp) {
+        this.createTimeStamp = createTimeStamp;
     }
 }

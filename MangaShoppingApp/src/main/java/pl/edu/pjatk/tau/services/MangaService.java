@@ -2,6 +2,7 @@ package pl.edu.pjatk.tau.services;
 
 import pl.edu.pjatk.tau.domain.Manga;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,8 @@ public class MangaService {
     public boolean create(Manga manga) {
         id++;
         manga.setId(id);
+        manga.getCreateTimeStamp().setDate(LocalDate.now());
+        manga.getUpdateTimeStamp().setDate(LocalDate.now());
         mangaList.add(manga);
         return true;
     }
@@ -29,6 +32,7 @@ public class MangaService {
     public Manga read(int id) {
         for (Manga manga : mangaList) {
             if (id == manga.getId()) {
+                manga.getReadTimeStamp().setDate(LocalDate.now());
                 return manga;
             }
         }
@@ -41,6 +45,9 @@ public class MangaService {
                 manga.setAutor(updatedManga.getAutor());
                 manga.setCategory(updatedManga.getAutor());
                 manga.setTitle(updatedManga.getTitle());
+                manga.getUpdateTimeStamp().setDate(LocalDate.now());
+                manga.getCreateTimeStamp().setDate(manga.getCreateTimeStamp().getDate());
+                manga.getReadTimeStamp().setDate(manga.getReadTimeStamp().getDate());
                 return true;
             }
         }
@@ -58,4 +65,5 @@ public class MangaService {
                 .filter(manga -> manga.getId() != id)
                 .collect(Collectors.toList());
     }
+
 }

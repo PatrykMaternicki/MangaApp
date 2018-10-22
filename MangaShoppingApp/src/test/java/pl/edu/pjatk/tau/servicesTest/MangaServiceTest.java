@@ -97,4 +97,9 @@ public class MangaServiceTest {
         exceptionRule.expectMessage("Object in database not found");
         service.remove(30);
     }
+
+    @Test
+    public void ShouldExceptedDataLocalTime() {
+
+    }
 }
