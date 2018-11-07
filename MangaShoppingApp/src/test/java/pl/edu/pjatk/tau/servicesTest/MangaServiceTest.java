@@ -6,7 +6,6 @@ import org.junit.rules.ExpectedException;
 import pl.edu.pjatk.tau.domain.Manga;
 import pl.edu.pjatk.tau.services.MangaService;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -99,7 +98,10 @@ public class MangaServiceTest {
     }
 
     @Test
-    public void ShouldExceptedDataLocalTime() {
-
+    public void shouldReturnMangaWhenCategoryAndRegexIsCorect() {
+        service.create(manga);
+        Manga wantedManga = service.findMangaLikeAs("Kizouki Mangaka", "autor");
+        assertEquals(wantedManga.getAutor(), "Kizouki Mangaka");
     }
+
 }

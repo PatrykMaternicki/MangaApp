@@ -77,4 +77,16 @@ public class Manga {
     public void setCreateTimeStamp(ITimeStamp createTimeStamp) {
         this.createTimeStamp = createTimeStamp;
     }
+
+    @Override
+    public String toString() {
+        return "Manga{" +
+                "autor="+ autor +
+                ", title='" + title +
+                " category=" + category + '\'' +
+                ", createTimeStamp=" + createTimeStamp +
+                ", updateTimeStamp=" + updateTimeStamp +
+                ", readTimeStamp=" + readTimeStamp +
+                '}';
+    }
 }

@@ -1,10 +1,12 @@
 package pl.edu.pjatk.tau.services;
 
 import pl.edu.pjatk.tau.domain.Manga;
+import pl.edu.pjatk.tau.utils.FieldResolver;
+import pl.edu.pjatk.tau.utils.RegexFilter;
 
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class MangaService {
@@ -66,4 +68,30 @@ public class MangaService {
                 .collect(Collectors.toList());
     }
 
+    public Manga findMangaLikeAs(String wantedString, String keyCategory) {
+        if (isFieldExist(keyCategory)) {
+            if (RegexFilter.match(mangaList, keyCategory, wantedString)) {
+                return RegexFilter.getFoundedManga();
+            } else {
+                throw new NullPointerException("Manga doesnt exist");
+            }
+        }
+        throw new NullPointerException("Category doesnt exist");
+    }
+
+    public Boolean removeMangaLikeAs(String wantedString, String keyCategory) {
+        if (isFieldExist(keyCategory)) {
+            if (RegexFilter.match(mangaList, keyCategory, wantedString)) {
+               remove(RegexFilter.getFoundedManga().getId());
+               return true;
+            } else {
+                throw new NullPointerException("Manga doesnt exist");
+            }
+        }
+        throw new NullPointerException("Category doesnt exist");
+    }
+
+    private Boolean isFieldExist(String keyCategory) {
+        return new FieldResolver().resolve(keyCategory);
+    }
 }
