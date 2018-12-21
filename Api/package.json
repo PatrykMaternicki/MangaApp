@@ -1,0 +1,27 @@
+{
+  "name": "mangaapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatrykMaternicki/MangaApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PatrykMaternicki/MangaApp/issues"
+  },
+  "homepage": "https://github.com/PatrykMaternicki/MangaApp#readme",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "express.js": "^1.0.0",
+    "nodemon": "^1.18.7",
+    "taffy": "^2.6.2",
+    "taffydb": "^2.7.3"
+  }
+}
